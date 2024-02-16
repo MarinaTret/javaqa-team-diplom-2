@@ -163,4 +163,31 @@ public class SavingAccountTest {
             SavingAccount account = new SavingAccount(2_000, 1_000, 10_000, -5);
         });
     }
+
+    @Test
+    public void ThrowExceptionForMinBalance() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            SavingAccount account = new SavingAccount(2_000, -1_000, 10_000, 5);
+        });
+    }
+    @Test
+    public void ThrowExceptionForMaxBalance() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            SavingAccount account = new SavingAccount(2_000, 1_000, 1_000, 5);
+        });
+    }
+
+    @Test
+    public void ThrowExceptionForInitialBalanceLessMinBalance() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            SavingAccount account = new SavingAccount(500, 1_000, 10_000, 5);
+        });
+    }
+
+    @Test
+    public void ThrowExceptionForInitialBalanceMoreMaxBalance() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            SavingAccount account = new SavingAccount(12_000, 1_000, 10_000, 5);
+        });
+    }
 }
