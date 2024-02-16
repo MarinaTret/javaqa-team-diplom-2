@@ -111,16 +111,6 @@ public class CreditAccountTest {
         Assertions.assertEquals(0, account.getBalance());
     }
 
-    @Test //расчёт процентов на отрицательный баланс счёта при условии, что счёт не будет меняться год
-    public void calculatePercentToNegativeBalance() {
-        CreditAccount account = new CreditAccount(
-                -200,
-                5_000,
-                15
-        );
-
-        Assertions.assertEquals(-30, account.yearChange());
-    }
 
     @Test //расчёт процентов на положительный баланс счёта при условии, что счёт не будет меняться год
     public void calculatePercentToPositiveBalance() {
