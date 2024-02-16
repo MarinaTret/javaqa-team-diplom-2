@@ -45,8 +45,8 @@ public class SavingAccount extends Account {
         if (amount <= 0) {
             return false;
         }
-        if (balance - amount >= minBalance) {
-            balance = balance - amount;
+        balance = balance - amount;
+        if (balance > minBalance) {
             return true;
         } else {
             return false;
@@ -69,8 +69,8 @@ public class SavingAccount extends Account {
         if (amount <= 0) {
             return false;
         }
-        if (balance + amount <= maxBalance) {
-            balance = balance + amount;
+        if (balance + amount < maxBalance) {
+            balance = amount;
             return true;
         } else {
             return false;
