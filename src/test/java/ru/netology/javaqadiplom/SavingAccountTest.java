@@ -48,6 +48,20 @@ public class SavingAccountTest {
     }
 
     @Test
+    public void shouldAddZero() {
+        SavingAccount account = new SavingAccount(
+                2_000,
+                1_000,
+                10_000,
+                5
+        );
+
+        account.add(0);
+
+        Assertions.assertEquals(2_000, account.getBalance());
+    }
+
+    @Test
     public void shouldAddNegativeAmount() {
         SavingAccount account = new SavingAccount(
                 2_000,
@@ -118,6 +132,20 @@ public class SavingAccountTest {
     }
 
     @Test
+    public void shouldPayAmountZero() {
+        SavingAccount account = new SavingAccount(
+                2_000,
+                1_000,
+                10_000,
+                5
+        );
+
+        account.pay(0);
+
+        Assertions.assertEquals(2_000, account.getBalance());
+    }
+
+    @Test
     public void shouldCalculateYearChange() {
         SavingAccount account = new SavingAccount(
                 2_000,
@@ -131,14 +159,8 @@ public class SavingAccountTest {
 
     @Test
     public void shouldCalculateYearChangeWithNegativeRate() {
-        SavingAccount account = new SavingAccount(
-                2_000,
-                1_000,
-                10_000,
-                -5
-        );
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            new SavingAccount(2_000, 1_000, 10_000, -5);
+            SavingAccount account = new SavingAccount(2_000, 1_000, 10_000, -5);
         });
     }
 }
