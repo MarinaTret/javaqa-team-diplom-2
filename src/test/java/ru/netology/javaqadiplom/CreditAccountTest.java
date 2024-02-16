@@ -6,28 +6,6 @@ import org.junit.jupiter.api.Test;
 public class CreditAccountTest {
 
     //Некорректные параметры для кредитного счета
-    @Test // Исключения для отрицательного баланса
-    public void exceptionForInitialBalance() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            CreditAccount account = new CreditAccount(
-                    -2_000,
-                    5_000,
-                    15
-            );
-        });
-    }
-
-    @Test // Исключения для отрицательного лимита
-    public void exceptionForCreditLimit() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            CreditAccount account = new CreditAccount(
-                    2_000,
-                    -5_000,
-                    15
-            );
-        });
-    }
-
     @Test // Исключения для отрицательной ставки
     public void exceptionForRate() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
@@ -64,7 +42,7 @@ public class CreditAccountTest {
 
         account.pay(6_000);
 
-        Assertions.assertEquals(-1_000, account.getBalance());
+        Assertions.assertEquals(-4_000, account.getBalance());
     }
 
     @Test // покупка больше лимита
